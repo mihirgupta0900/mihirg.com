@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "Gambetta";
+  src: url("/fonts/Gambetta/Gambetta-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gambetta";
+  src: url("/fonts/Gambetta/Gambetta-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gambetta";
+  src: url("/fonts/Gambetta/Gambetta-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gambetta";
+  src: url("/fonts/Gambetta/Gambetta-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/fonts/CabinetGrotesk/CabinetGrotesk-Regular.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/fonts/CabinetGrotesk/CabinetGrotesk-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/fonts/CabinetGrotesk/CabinetGrotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alpino";
+  src: url("/fonts/Alpino/Alpino-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alpino";
+  src: url("/fonts/Alpino/Alpino-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alpino";
+  src: url("/fonts/Alpino/Alpino-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alpino";
+  src: url("/fonts/Alpino/Alpino-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alpino";
+  src: url("/fonts/Alpino/Alpino-Thin.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alpino";
+  src: url("/fonts/Alpino/Alpino-Black.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}

@@ -1,0 +1,72 @@
+import BlogLayout from "../../components/BlogLayout.tsx";
+
+export const meta = {
+  title:
+    "Everything I Know About Style Guides, Design Systems, and Component Libraries",
+  date: new Date("2021-04-26"),
+};
+
+For the better part of the last year, I've been investing heavily in front-end development and design. When I started my new role, I identified a need for a component library and created it. Since then, I've learned a lot about style guides, design systems, component libraries, and their best practices. This post will be a deep-dive on everything I've learned in the past year.
+
+## Table of Contents
+
+1. [Why Should You Care?](#why-should-you-care?)
+2. What is a Style Guide?
+3. What is a Component Library?
+4. What is a Design System?
+
+## Why Should You Care?
+
+Every website starts simple. There's maybe one page with a few distinct pieces. It has modest intentions.
+
+![sample](https://leerob.io/_next/image?url=%2Fstatic%2Fimages%2Fstyle-guides-component-libraries-design-systems%2Fwebsite.png&w=1920&q=75)
+
+Then, slowly, it begins to scale.
+
+More pages are added and new features are built. There might even be multiple teams devoted to specific sections of the site. You could be developing for mobile, too.
+
+You start to notice the buttons in one part of the site are slightly different than everywhere else. One team decides to build a feature that another team has (unknowingly) already completed. Communication breakdowns happen. Consistency is lost.
+
+Is this a preventable problem? Absolutely. Yet, why does it happen over and over again? Unless you think about your design and development process upfront, you will run into issues later as you scale.
+
+To prevent this issue from happening, or to fix the existing lack of consistency in your products, you need three things:
+
+- Style Guide
+- Component Library
+- Design System
+
+```ts
+export const colors: Colors = {
+  accent: '#ff5252',
+  background: '#0a6159',
+  border: '#dcdcdc',
+  grey: {
+      100: '#F5F7FA',
+      200: '#E4E7EB',
+      300: '#CBD2D9',
+      400: '#9AA5B1',
+      500: '#7B8794',
+      600: '#616E7C',
+      700: '#52606D',
+      800: '#3E4C59',
+      900: '#323F4B',
+      1000: '#1F2933'
+  },
+  light: '#606060',
+  text: '#101010'
+};
+
+export const spacing = {
+  extrasmall: '0.5em',
+  small: '1em'
+  normal: '1.5em',
+  large: '2em',
+  extralarge: '2.5em',
+};
+```
+
+Don't worry if you have no idea what I'm talking about yet. By the end of this article, you'll have consumed almost a year's worth of trial & error, research, and development.
+
+export default ({ children }) => (
+  <BlogLayout meta={meta}>{children}</BlogLayout>
+);
