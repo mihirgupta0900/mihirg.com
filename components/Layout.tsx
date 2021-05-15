@@ -3,11 +3,11 @@ import Header from "./Header";
 
 const Layout: FC = ({ children }) => {
   return (
-    <div className="md:flex flex-col md:flex-row md:min-h-screen w-full dark:text-white">
+    <div className="flex flex-col w-full dark:text-white">
       <Header />
-      <div className="md:w-4/5 md:ml-auto">
-        <main className="w-full flex flex-col">{children}</main>
-      </div>
+      <main className="flex text-xl flex-col md:mx-auto md:w-2/5 mx-4 w-full">
+        {children}
+      </main>
     </div>
   );
 };

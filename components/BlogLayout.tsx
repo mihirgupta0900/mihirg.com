@@ -36,7 +36,7 @@ const BlogLayout: FC<{
       <main className="flex text-xl flex-col md:mx-auto md:w-2/5 mx-4 w-full">
         <h1 className="text-5xl mt-10 mx-auto font-bold">{title}</h1>
         <div className="opacity-90 flex justify-between items-center">
-          <p className="mt-4">{format(date, "do MMMM, yyyy")}</p>
+          <p className="mt-4">{format(Number(date), "do MMMM, yyyy")}</p>
           {/* <p>12 min read</p> */}
         </div>
         <div className="my-4 text-xl blog">{children}</div>
