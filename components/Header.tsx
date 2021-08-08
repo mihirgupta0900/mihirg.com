@@ -40,7 +40,7 @@ const Header = () => {
           }
         >
           <ActiveLink href="/">Home</ActiveLink>
-          <ActiveLink href="/blog">Blog</ActiveLink>
+          {/* <ActiveLink href="/blog">Blog</ActiveLink> */}
         </nav>
       </div>
     </div>

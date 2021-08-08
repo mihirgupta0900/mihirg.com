@@ -16,11 +16,23 @@ const Home: FC<Props> = ({ posts }) => {
           Hey! I'm Mihir Gupta
         </h1>
         <p className="mt-4 text-xl">
-          Welcome to my home in the cloud. I build software, write blogs and
-          share what I learn from books, people and experiences.
+          Welcome to my home in the cloud. I build software, write articles (not
+          yet, just starting out) and share what I learn from books, people and
+          experiences. I work as the CTO at{" "}
+          <a href="https://coinvise.co">Coinvise.</a>
+        </p>
+
+        <p className="mt-4 text-xl">
+          This blog is still a work in progress. Untill then feel free to reach
+          me on <a href="https://twitter.com/0900mihir">Twitter (@0900mihir)</a>{" "}
+          or{" "}
+          <a href="mailto:mihirgupta0900@gmail.com">
+            email (mihirgupta0900@gmail.com)
+          </a>{" "}
+          me.
         </p>
       </div>
-      <div className="mt-10">
+      {/* <div className="mt-10">
         <h2 className="text-5xl font-heading font-bold mb-2">Posts</h2>
         <ul>
           {posts.map((post, i) => (
@@ -29,7 +41,7 @@ const Home: FC<Props> = ({ posts }) => {
             </div>
           ))}
         </ul>
-      </div>
+      </div> */}
     </Layout>
   );
 };
