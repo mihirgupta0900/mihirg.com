@@ -9,3 +9,13 @@
       1px 1px 0px hsla(0, 0%, 0%, 0.14),
     0px 2px 1px -1px hsla(0, 0%, 0%, 0.12), 0px 1px 3px 0px hsla(0, 0%, 0%, 0.2);
 }
+
+@layer base {
+  a {
+    @apply text-accent;
+  }
+
+  a:hover {
+    @apply underline;
+  }
+}

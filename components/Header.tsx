@@ -6,14 +6,14 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div style={{ zIndex: 9999 }} className="sticky top-0 bg-bgc w-full">
-      <div className="flex justify-between mx-auto w-1/2 text-gray-700 dark:text-gray-200 h-28 items-center">
+      <div className="flex md:flex-row flex-col justify-between mx-auto text-gray-700 dark:text-gray-200 h-28 items-center">
         <div className="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
           <Link href="/">
             <a className="text-2xl font-semibold font-heading mx-auto tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">
               Mihir Gupta
             </a>
           </Link>
-          <button
+          {/* <button
             className="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
             onClick={() => setIsOpen((s) => !s)}
           >
@@ -31,7 +31,7 @@ const Header = () => {
                 clipRule="evenodd"
               ></path>
             </svg>
-          </button>
+          </button> */}
         </div>
         <nav
           className={
