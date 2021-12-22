@@ -30,7 +30,7 @@ const Home: FC<Props> = ({ posts }) => {
           <a href="mailto:mihirgupta0900@gmail.com">
             email {/* (mihirgupta0900@gmail.com) */}
           </a>{" "}
-          me or subscitibe to my mailing list below 👇
+          me or subscribe to my mailing list below 👇
         </p>
       </div>
       <Subscribe />
