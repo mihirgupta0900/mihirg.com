@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 import { useRouter } from "next/router";
 
 const isSamePage = (first: string, second: string): boolean => {
@@ -12,17 +12,19 @@ const isSamePage = (first: string, second: string): boolean => {
   }
 };
 
-const ActiveLink: FC<{ href: string }> = ({ href, children }) => {
+const ActiveLink: FC<PropsWithChildren<{ href: string }>> = ({
+  href,
+  children,
+}) => {
   const router = useRouter();
   return (
-    <Link href={href}>
-      <a
-        className={`text-xl transition-all ease-in duration-100 mr-2 ml-2 ${
-          isSamePage(router.asPath, href) ? "text-accent" : "hover:text-accent"
-        }`}
-      >
-        {children}
-      </a>
+    <Link
+      href={href}
+      className={`text-xl transition-all ease-in duration-100 mr-2 ml-2 ${
+        isSamePage(router.asPath, href) ? "text-accent" : "hover:text-accent"
+      }`}
+    >
+      {children}
     </Link>
   );
 };
