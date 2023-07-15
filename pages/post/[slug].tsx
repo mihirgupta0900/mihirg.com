@@ -1,33 +1,30 @@
-import fs from "fs";
-import matter from "gray-matter";
-import { GetStaticPaths, GetStaticProps } from "next";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
+import { format } from "date-fns";
+import {
+  GetStaticPaths,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+} from "next";
 import Error from "next/error";
 import { useRouter } from "next/router";
-import path from "path";
 import { FC, FormEvent, RefObject, useEffect, useRef } from "react";
 import { useButtonDown } from "use-button-down";
+import { MDX } from "../../components/Blog/MDX";
 import Header from "../../components/Header";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import components from "../../components/Mdx";
-import { FrontMatter } from "../../utils/interfaces";
-import { POSTS_PATH } from "../../utils/mdx";
+import { getPostBySlug } from "../../lib/file";
+import { log } from "../../lib/log";
+import { prepareMdx } from "../../lib/mdx";
 
-interface Props {
-  frontmatter?: FrontMatter;
-  content?: MDXRemoteSerializeResult<Record<string, unknown>>;
-}
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Post: FC<Props> = ({ content, frontmatter }) => {
+const Post: FC<Props> = (props) => {
   const router = useRouter();
 
   if (router.isFallback) {
     return <div className="">Loading...</div>;
   }
 
-  if (!content || !frontmatter) {
+  if (!props.mdx) {
     return <Error statusCode={404} />;
   }
 
@@ -50,14 +47,16 @@ const Post: FC<Props> = ({ content, frontmatter }) => {
       <Header />
       <main className="flex text-xl flex-col md:mx-auto md:w-2/5 mx-4 w-full">
         <h1 className="text-5xl mt-10 mx-auto font-bold">
-          {frontmatter.title}
+          {props.mdx.frontmatter.title}
         </h1>
         <div className="opacity-90 flex justify-between items-center">
-          {/* <p className="mt-4">{format(Number(date), "do MMMM, yyyy")}</p> */}
+          <p className="mt-4">
+            {format(new Date(props.mdx.frontmatter.date), "do MMMM, yyyy")}
+          </p>
           {/* <p>12 min read</p> */}
         </div>
         <div className="my-4 text-xl blog">
-          <MDXRemote {...content} components={components} />
+          <MDX source={props.mdx.code} />
         </div>
         <div className="w-full flex-col justify-around py-6 items-center dark:bg-dp01 rounded-lg mb-10 flex">
           <div className="text-center">
@@ -98,6 +97,7 @@ const Post: FC<Props> = ({ content, frontmatter }) => {
             >
               Twitter
             </a>
+            {/* Linkedin */}
             {/* <a href="" className="mr-2"></a> */}
             {/* <a href="" className="mr-2"></a>  */}
           </div>
@@ -107,28 +107,24 @@ const Post: FC<Props> = ({ content, frontmatter }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
+export const getStaticProps = async ({
   params,
-}) => {
+}: GetStaticPropsContext<{ slug: string }>) => {
   if (!params) return { props: {} };
 
-  const postPath = path.join(POSTS_PATH, `${params.slug}.mdx`);
-  const rawSource = fs.readFileSync(postPath);
-  const { content, data } = matter(rawSource);
+  log("Post", "Fetching");
+  const post = await getPostBySlug(params.slug);
+  if (!post)
+    return {
+      notFound: true,
+    };
 
-  const mdxSource = await serialize(content, {
-    // Optionally pass remark/rehype plugins
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  });
+  log("Post", "Preparing MDX");
+  const mdx = await prepareMdx(post);
 
   return {
     props: {
-      frontmatter: data,
-      content: mdxSource,
+      mdx,
     },
   };
 };

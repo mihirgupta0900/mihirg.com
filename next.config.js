@@ -1,3 +1,6 @@
+/**
+ * @type {import('next').NextConfig}
+ */
 module.exports = {
   reactStrictMode: true,
   images: {},
@@ -6,6 +9,10 @@ module.exports = {
       {
         source: "/home",
         destination: "/",
+      },
+      {
+        source: "/tools",
+        destination: "/post/tools",
       },
     ];
   },

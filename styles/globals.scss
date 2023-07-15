@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./blog.scss";
+@import "./fonts.scss";
+@import "./prism.scss";
+
 .dp01 {
   background-color: hsla(0, 100%, 100%, 0.05);
   box-shadow:
