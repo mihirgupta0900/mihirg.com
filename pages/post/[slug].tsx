@@ -50,15 +50,15 @@ const Post: FC<Props> = (props) => {
           {props.mdx.frontmatter.title}
         </h1>
         <div className="opacity-90 flex justify-between items-center">
-          <p className="mt-4">
+          <p className="mt-4 text-base">
             {format(new Date(props.mdx.frontmatter.date), "do MMMM, yyyy")}
           </p>
           {/* <p>12 min read</p> */}
         </div>
-        <div className="my-4 text-xl blog">
+        <div className="my-4 text-lg blog">
           <MDX source={props.mdx.code} />
         </div>
-        <div className="w-full flex-col justify-around py-6 items-center dark:bg-dp01 rounded-lg mb-10 flex">
+        <div className="w-full mt-20 flex-col justify-around py-6 items-center dark:bg-dp01 rounded-lg mb-10 flex">
           <div className="text-center">
             <h3 className="text-3xl">Want to know when I post a new blog?</h3>
             <p className="text-xl">
