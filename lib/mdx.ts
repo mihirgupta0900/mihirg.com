@@ -1,6 +1,7 @@
 import path from "path";
 import { getPostBySlug } from "./file";
 import remarkMdxImages from "remark-mdx-images";
+import rehypePrism from "@mapbox/rehype-prism";
 
 // TODO: Use zod validation
 type Frontmatter = {
@@ -40,6 +41,8 @@ export const prepareMdx = async (
         gfm as any,
         remarkMdxImages,
       ];
+
+      options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypePrism];
 
       return options;
     },
