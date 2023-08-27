@@ -1,0 +1,51 @@
+---
+title: "Fork your Postgres DB"
+date: "2023-08-27"
+---
+
+While developing, there is often need to clone the current local database to try new features. I wrote a small bash script that helps you "fork" the database.
+
+```bash
+function fork_db() {
+  local src_db=$1
+  local dest_db=$2
+  local username=$3
+  local dumpname="temp_dump"
+
+  # Create a dump of the source database
+  echo "Creating dump of $src_db..."
+  pg_dump -Fc -h localhost -U $username -d $src_db >$dumpname.dump
+
+  # Create the destination database
+  echo "Creating new database $dest_db..."
+  psql -h localhost -U $username -d $src_db -c "CREATE DATABASE $dest_db;"
+
+  # Restore the dump into the new database
+  echo "Restoring dump into $dest_db..."
+  pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $username -d $dest_db $dumpname.dump
+
+  # Remove the temporary dump file
+  echo "Cleaning up..."
+  rm $dumpname.dump
+
+  echo "Done."
+}
+```
+
+## Usage
+
+If using MacOS or Linux, put the above function in your `.bashrc` or `.zshrc`.
+
+Then you can use it the following way:
+
+```bash
+fork_db {db_to_fork} {forked_db_name} {postgres_username}
+```
+
+An example of how I may use it:
+
+```bash
+fork_db coinvise coinvise_feat_campaign mihirgupta
+```
+
+Ps, if you have any suggestions on improving the above script, please reach out!
